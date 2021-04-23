@@ -66,6 +66,8 @@
         let amount=0;
         let cab=document.querySelector("#cab").value;
         let km=document.querySelector("#km").value;
+        if(km>0)
+        {
         if(cab=="MICRO")
         {
             total=10*km;
@@ -83,6 +85,11 @@
         amount=gstAmount+total;
         document.getElementById('gst').innerHTML="The GST is Rs. "+Math.round(gstAmount); 
         document.getElementById('totalAmount').innerHTML="The Total amount is Rs. "+Math.round(amount); 
+        }
+        else
+        {
+            document.getElementById('bill').innerHTML="Please Enter Valid Kilometer";
+        }
     }
     function nextpage()
     {
