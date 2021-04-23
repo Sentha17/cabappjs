@@ -4,15 +4,16 @@
 <meta charset="ISO-8859-1">
 <title>Booking</title>
 <style>
-        div{
-            width:400px;
-            height:450px;
-            padding:80px;
-            margin:auto;
-               margin-top:20px;
-               border-radius:10px;
-               background:lightsalmon
-        }
+    div
+    {
+        width:400px;
+        height:450px;
+        padding:80px;
+        margin:auto;
+        margin-top:20px;
+        border-radius:10px;
+        background:lightsalmon
+    }
 </style>
 </head>
 <div id="">
@@ -22,18 +23,14 @@
 <form action onsubmit="date()">
 	<label> Journey Date</label>
 	<input type="date" name="journeyDate" id="journeyDate"required/>
-    <br/>
-    <br/>
+    <br/><br/>
     <label for="validDate" id="validDate"></label>
-    <br/>
-    <br/>
+    <br/><br/>
 	<label> Timings</label>	
 	<input type="time" name="pickupTime" id="journeyTime" required/>
-    <br/>
-    <br/>
+    <br/><br/>
     <label for="validTime" id="validTime"></label>
-    <br/>
-    <br/>
+    <br/><br/>
 	<label> Senior Citizen</label>
 	<input type="checkbox" name="seniorCitizen" value="Y"> Senior Citizen
 	<br/><br/>
@@ -41,13 +38,12 @@
 	<input type="radio" name="male" value="m"> Male
 	<input type="radio" name="female" value="f">Female
     <br/><br/>
-     <button type="submit" onclick="date()">Submit</button>
+    <button type="submit" onclick="date()">Submit</button>
     <button type="reset">Reset</button>
     <h2>Instructions</h2>
 	    <li>Should wear mask</li>
 	    <li>Keep hand sanitizer</li>
-    <br/>
-    <br/>
+    <br/><br/>
     <label for="booking" id="bookingStatus"></label>
     <br/>
     <label for="journey" id="journeyStatus"></label>
@@ -56,42 +52,43 @@
 <script>
 	function date()
 	{
-    event.preventDefault();
-    let bool=0;
-    let today = new Date();
-    let tdate = today.getDate();
-    let tmonth = today.getMonth()+1;
-    let tyear = today.getFullYear();
-    let jdate = document.getElementById("journeyDate").value;
-    let jyear = jdate.substr(0,4);
-    let jmonth = jdate.substr(5,2);
-    let juserdate = jdate.substr(8,2);
-    if(tyear<=jyear && tmonth<=jmonth && tdate<=juserdate){
-        
-        document.getElementById("validDate").innerHTML="Valid date";
-        bool=1;
-			  
+        event.preventDefault();
+        let bool=0;
+        let today = new Date();
+        let tdate = today.getDate();
+        let tmonth = today.getMonth()+1;
+        let tyear = today.getFullYear();
+        let jdate = document.getElementById("journeyDate").value;
+        let jyear = jdate.substr(0,4);
+        let jmonth = jdate.substr(5,2);
+        let juserdate = jdate.substr(8,2);
+        if(tyear<=jyear && tmonth<=jmonth && tdate<=juserdate)
+        {
+            
+            document.getElementById("validDate").innerHTML="Valid date";
+            bool=1;     
+        }
+        else
+        { 
+            document.getElementById("validDate").innerHTML="Invalid Date";
+        }
+        let jtime = document.getElementById("journeyTime").value;
+        let onlyHour = jtime.substr(0,2);
+        let onlyMinute=jtime.substr(3,2);
+        if(jtime<=17 && jtime>=19)
+        {
+            document.getElementById("validTime").innerHTML="Cab Booked in Peak Hours";
+        }
+        else
+        {
+            document.getElementById("validTime").innerHTML="Cab Booked in Normal Hours";
+        }
+        if(bool==1)
+        {
+            document.getElementById("bookingStatus").innerHTML="----Ticket Booked Successfully----";
+            document.getElementById("journeyStatus").innerHTML="----Have a Happy Journey----";
+        }
     }
-	else{ 
-        document.getElementById("validDate").innerHTML="Invalid Date";
-    }
-    let jtime = document.getElementById("journeyTime").value;
-    let onlyHour = jtime.substr(0,2);
-    let onlyMinute=jtime.substr(3,2);
-    if(jtime<=17 && jtime>=19)
-    {
-        document.getElementById("validTime").innerHTML="Cab Booked in Peak Hours";
-    }
-    else
-    {
-        document.getElementById("validTime").innerHTML="Cab Booked in Normal Hours";
-    }
-    if(bool==1)
-    {
-        document.getElementById("bookingStatus").innerHTML="----Ticket Booked Successfully----";
-        document.getElementById("journeyStatus").innerHTML="----Have a Happy Journey----";
-    }
-}
 </script>
 </body>
 </html>
